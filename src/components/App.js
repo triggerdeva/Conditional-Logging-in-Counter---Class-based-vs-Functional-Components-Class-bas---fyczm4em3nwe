@@ -4,17 +4,20 @@ import '../styles/App.css';
 class App extends React.Component{
   
   handleClick(){
-    this.setState({count: this.state.count + 1})
+    if(this.state.flag){
+      this.setState({count: this.state.count + 2,flag:false});
+    }
+    else this.setState({flag:true});
   }
   constructor(props){
     super(props)
-    this.state = {count:0}
+    this.state = {count:0,flag:false}
     this.handleClick = this.handleClick.bind(this)
   }
 
 
   render(){
-    console.log(`Rendering with count:-${this.state.count}`)
+    {!this.state.flag && console.log(`Rendering with count:-${this.state.count}`)};
     return(
       <div>
         <span id="count">{this.state.count}</span>
